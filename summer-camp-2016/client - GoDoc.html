@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client -->
+<html lang="en"><head profile="http://a9.com/-/spec/opensearch/1.1/"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./client - GoDoc_files/bootstrap.min.css" rel="stylesheet">
+  <link href="./client - GoDoc_files/site.css" rel="stylesheet">
+  
+  
+  <title>client - GoDoc</title>
+  
+  
+
+  
+
+<style type="text/css"></style></head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="https://godoc.org/"><strong>GoDoc</strong></a>
+  </div>
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+        <li><a href="https://godoc.org/">Home</a></li>
+        <li><a href="https://godoc.org/-/index">Index</a></li>
+        <li><a href="https://godoc.org/-/about">About</a></li>
+    </ul>
+    <form class="navbar-nav navbar-form navbar-right" id="x-search" action="https://godoc.org/" role="search"><input class="form-control" id="x-search-query" type="text" name="q" placeholder="Search"></form>
+  </div>
+</div>
+</nav>
+
+<div class="container">
+  
+  
+
+
+
+        <div class="clearfix" id="x-projnav">
+  <a href="https://github.com/hybridgroup/gobot"><strong>gobot:</strong></a>
+  <a href="https://godoc.org/github.com/hybridgroup/gobot">github.com/hybridgroup/gobot</a><span class="text-muted">/</span><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms">platforms</a><span class="text-muted">/</span><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop">bebop</a><span class="text-muted">/</span><span class="text-muted">client</span>
+  
+  <span class="pull-right">
+    
+      <a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#pkg-index">Index</a>
+      
+      <span class="text-muted">|</span>
+    
+    <a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#pkg-files">Files</a>
+    <span class="text-muted">|</span> <a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#pkg-subdirectories">Directories</a>
+  </span>
+  
+</div>
+
+        <h2 id="pkg-overview">package client</h2>
+
+        <p><code>import "github.com/hybridgroup/gobot/platforms/bebop/client"</code>
+
+        
+
+        
+  
+
+
+        
+        </p><h3 id="pkg-index" class="section-header">Index <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#pkg-index">¶</a></h3>
+
+        
+
+        <ul class="list-unstyled">
+          <li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#pkg-constants">Constants</a></li>
+          
+          
+          
+            <li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#ARStreamACK">type ARStreamACK</a></li>
+            
+            
+            
+            
+          
+            <li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#ARStreamFrame">type ARStreamFrame</a></li>
+            <ul>
+            <li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#NewARStreamFrame">func NewARStreamFrame(buf []byte) ARStreamFrame</a></li>
+            
+            </ul>
+          
+            <li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">type Bebop</a></li>
+            <ul>
+            <li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#New">func New() *Bebop</a></li>
+            <li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Backward">func (b *Bebop) Backward(val int) error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Clockwise">func (b *Bebop) Clockwise(val int) error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Connect">func (b *Bebop) Connect() error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.CounterClockwise">func (b *Bebop) CounterClockwise(val int) error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Discover">func (b *Bebop) Discover() error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Down">func (b *Bebop) Down(val int) error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.FlatTrim">func (b *Bebop) FlatTrim() error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Forward">func (b *Bebop) Forward(val int) error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.GenerateAllStates">func (b *Bebop) GenerateAllStates() error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.HullProtection">func (b *Bebop) HullProtection(protect bool) error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Land">func (b *Bebop) Land() error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Left">func (b *Bebop) Left(val int) error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Outdoor">func (b *Bebop) Outdoor(outdoor bool) error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Right">func (b *Bebop) Right(val int) error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.StartRecording">func (b *Bebop) StartRecording() error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Stop">func (b *Bebop) Stop() error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.StopRecording">func (b *Bebop) StopRecording() error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.TakeOff">func (b *Bebop) TakeOff() error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Up">func (b *Bebop) Up(val int) error</a></li><li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Video">func (b *Bebop) Video() chan []byte</a></li>
+            </ul>
+          
+            <li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#NetworkFrame">type NetworkFrame</a></li>
+            <ul>
+            <li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#NewNetworkFrame">func NewNetworkFrame(buf []byte) NetworkFrame</a></li>
+            
+            </ul>
+          
+            <li><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Pcmd">type Pcmd</a></li>
+            
+            
+            
+            
+          
+          
+        </ul>
+
+        
+        
+          <span id="pkg-examples"></span>
+        
+
+        
+        
+<h4 id="pkg-files">
+  <a href="https://github.com/hybridgroup/gobot/tree/master/platforms/bebop/client">Package Files</a>
+  <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#pkg-files">¶</a>
+</h4>
+
+<p><a href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go">client.go</a> <a href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/constants.go">constants.go</a> </p>
+
+        
+        
+          <h3 id="pkg-constants">Constants <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#pkg-constants">¶</a></h3>
+          <div class="decl" data-kind="c"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/constants.go#L3">❖</a><pre>const (
+    <span class="com">// libARNetworkAL/Includes/libARNetworkAL/ARNETWORKAL_Manager.h</span>
+    <span id="ARNETWORKAL_MANAGER_DEFAULT_ID_MAX">ARNETWORKAL_MANAGER_DEFAULT_ID_MAX</span> <a href="https://godoc.org/builtin#uint16">uint16</a> = 256
+
+    <span class="com">// ARNETWORKAL_Frame_t identifiers</span>
+    <span id="BD_NET_CD_NONACK_ID">BD_NET_CD_NONACK_ID</span>     <a href="https://godoc.org/builtin#byte">byte</a> = 10
+    <span id="BD_NET_CD_ACK_ID">BD_NET_CD_ACK_ID</span>        <a href="https://godoc.org/builtin#byte">byte</a> = 11
+    <span id="BD_NET_CD_EMERGENCY_ID">BD_NET_CD_EMERGENCY_ID</span>  <a href="https://godoc.org/builtin#byte">byte</a> = 12
+    <span id="BD_NET_CD_VIDEO_ACK_ID">BD_NET_CD_VIDEO_ACK_ID</span>  <a href="https://godoc.org/builtin#byte">byte</a> = 13
+    <span id="BD_NET_DC_VIDEO_DATA_ID">BD_NET_DC_VIDEO_DATA_ID</span> <a href="https://godoc.org/builtin#byte">byte</a> = 125
+    <span id="BD_NET_DC_EVENT_ID">BD_NET_DC_EVENT_ID</span>      <a href="https://godoc.org/builtin#byte">byte</a> = 126
+    <span id="BD_NET_DC_NAVDATA_ID">BD_NET_DC_NAVDATA_ID</span>    <a href="https://godoc.org/builtin#byte">byte</a> = 127
+
+    <span class="com">// eARCOMMANDS_ID_PROJECT</span>
+    <span id="ARCOMMANDS_ID_PROJECT_COMMON">ARCOMMANDS_ID_PROJECT_COMMON</span>   <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARCOMMANDS_ID_PROJECT_ARDRONE3">ARCOMMANDS_ID_PROJECT_ARDRONE3</span> <a href="https://godoc.org/builtin#byte">byte</a> = 1
+
+    <span class="com">// eARCOMMANDS_ID_ARDRONE3_CLASS</span>
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTING">ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTING</span>              <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_ANIMATIONS">ARCOMMANDS_ID_ARDRONE3_CLASS_ANIMATIONS</span>            <a href="https://godoc.org/builtin#byte">byte</a> = 5
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_CAMERA">ARCOMMANDS_ID_ARDRONE3_CLASS_CAMERA</span>                <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_MEDIARECORD">ARCOMMANDS_ID_ARDRONE3_CLASS_MEDIARECORD</span>           <a href="https://godoc.org/builtin#byte">byte</a> = 7
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_MEDIARECORDSTATE">ARCOMMANDS_ID_ARDRONE3_CLASS_MEDIARECORDSTATE</span>      <a href="https://godoc.org/builtin#byte">byte</a> = 8
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_MEDIARECORDEVENT">ARCOMMANDS_ID_ARDRONE3_CLASS_MEDIARECORDEVENT</span>      <a href="https://godoc.org/builtin#byte">byte</a> = 3
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE">ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSTATE</span>         <a href="https://godoc.org/builtin#byte">byte</a> = 4
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_NETWORK">ARCOMMANDS_ID_ARDRONE3_CLASS_NETWORK</span>               <a href="https://godoc.org/builtin#byte">byte</a> = 13
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_NETWORKSTATE">ARCOMMANDS_ID_ARDRONE3_CLASS_NETWORKSTATE</span>          <a href="https://godoc.org/builtin#byte">byte</a> = 14
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSETTINGS">ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSETTINGS</span>      <a href="https://godoc.org/builtin#byte">byte</a> = 2
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSETTINGSSTATE">ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSETTINGSSTATE</span> <a href="https://godoc.org/builtin#byte">byte</a> = 6
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_SPEEDSETTINGS">ARCOMMANDS_ID_ARDRONE3_CLASS_SPEEDSETTINGS</span>         <a href="https://godoc.org/builtin#byte">byte</a> = 11
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_SPEEDSETTINGSSTATE">ARCOMMANDS_ID_ARDRONE3_CLASS_SPEEDSETTINGSSTATE</span>    <a href="https://godoc.org/builtin#byte">byte</a> = 12
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_NETWORKSETTINGS">ARCOMMANDS_ID_ARDRONE3_CLASS_NETWORKSETTINGS</span>       <a href="https://godoc.org/builtin#byte">byte</a> = 9
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_NETWORKSETTINGSSTATE">ARCOMMANDS_ID_ARDRONE3_CLASS_NETWORKSETTINGSSTATE</span>  <a href="https://godoc.org/builtin#byte">byte</a> = 10
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_SETTINGS">ARCOMMANDS_ID_ARDRONE3_CLASS_SETTINGS</span>              <a href="https://godoc.org/builtin#byte">byte</a> = 15
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_SETTINGSSTATE">ARCOMMANDS_ID_ARDRONE3_CLASS_SETTINGSSTATE</span>         <a href="https://godoc.org/builtin#byte">byte</a> = 16
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_DIRECTORMODE">ARCOMMANDS_ID_ARDRONE3_CLASS_DIRECTORMODE</span>          <a href="https://godoc.org/builtin#byte">byte</a> = 17
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_DIRECTORMODESTATE">ARCOMMANDS_ID_ARDRONE3_CLASS_DIRECTORMODESTATE</span>     <a href="https://godoc.org/builtin#byte">byte</a> = 18
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_PICTURESETTINGS">ARCOMMANDS_ID_ARDRONE3_CLASS_PICTURESETTINGS</span>       <a href="https://godoc.org/builtin#byte">byte</a> = 19
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_PICTURESETTINGSSTATE">ARCOMMANDS_ID_ARDRONE3_CLASS_PICTURESETTINGSSTATE</span>  <a href="https://godoc.org/builtin#byte">byte</a> = 20
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_MEDIASTREAMING">ARCOMMANDS_ID_ARDRONE3_CLASS_MEDIASTREAMING</span>        <a href="https://godoc.org/builtin#byte">byte</a> = 21
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_MEDIASTREAMINGSTATE">ARCOMMANDS_ID_ARDRONE3_CLASS_MEDIASTREAMINGSTATE</span>   <a href="https://godoc.org/builtin#byte">byte</a> = 22
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_GPSSETTINGS">ARCOMMANDS_ID_ARDRONE3_CLASS_GPSSETTINGS</span>           <a href="https://godoc.org/builtin#byte">byte</a> = 23
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_GPSSETTINGSSTATE">ARCOMMANDS_ID_ARDRONE3_CLASS_GPSSETTINGSSTATE</span>      <a href="https://godoc.org/builtin#byte">byte</a> = 24
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_CAMERASTATE">ARCOMMANDS_ID_ARDRONE3_CLASS_CAMERASTATE</span>           <a href="https://godoc.org/builtin#byte">byte</a> = 25
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_ANTIFLICKERING">ARCOMMANDS_ID_ARDRONE3_CLASS_ANTIFLICKERING</span>        <a href="https://godoc.org/builtin#byte">byte</a> = 29
+    <span id="ARCOMMANDS_ID_ARDRONE3_CLASS_ANTIFLICKERINGSTATE">ARCOMMANDS_ID_ARDRONE3_CLASS_ANTIFLICKERINGSTATE</span>   <a href="https://godoc.org/builtin#byte">byte</a> = 30
+
+    <span class="com">// eARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD</span>
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_FLATTRIMCHANGED">ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_FLATTRIMCHANGED</span>          <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_FLYINGSTATECHANGED">ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_FLYINGSTATECHANGED</span>       <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_ALERTSTATECHANGED">ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_ALERTSTATECHANGED</span>        <a href="https://godoc.org/builtin#byte">byte</a> = 2
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_NAVIGATEHOMESTATECHANGED">ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_NAVIGATEHOMESTATECHANGED</span> <a href="https://godoc.org/builtin#byte">byte</a> = 3
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_POSITIONCHANGED">ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_POSITIONCHANGED</span>          <a href="https://godoc.org/builtin#byte">byte</a> = 4
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_SPEEDCHANGED">ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_SPEEDCHANGED</span>             <a href="https://godoc.org/builtin#byte">byte</a> = 5
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_ATTITUDECHANGED">ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_ATTITUDECHANGED</span>          <a href="https://godoc.org/builtin#byte">byte</a> = 6
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_AUTOTAKEOFFMODECHANGED">ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_AUTOTAKEOFFMODECHANGED</span>   <a href="https://godoc.org/builtin#byte">byte</a> = 7
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_ALTITUDECHANGED">ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_ALTITUDECHANGED</span>          <a href="https://godoc.org/builtin#byte">byte</a> = 8
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_MAX">ARCOMMANDS_ID_ARDRONE3_PILOTINGSTATE_CMD_MAX</span>                      <a href="https://godoc.org/builtin#byte">byte</a> = 9
+
+    <span class="com">// eARCOMMANDS_ID_ARDRONE3_ANIMATIONS_CMD;</span>
+    <span id="ARCOMMANDS_ID_ARDRONE3_ANIMATIONS_CMD_FLIP">ARCOMMANDS_ID_ARDRONE3_ANIMATIONS_CMD_FLIP</span> <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARCOMMANDS_ID_ARDRONE3_ANIMATIONS_CMD_MAX">ARCOMMANDS_ID_ARDRONE3_ANIMATIONS_CMD_MAX</span>  <a href="https://godoc.org/builtin#byte">byte</a> = 1
+
+    <span class="com">// eARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE;</span>
+    <span id="ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_LANDED">ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_LANDED</span>    <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_TAKINGOFF">ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_TAKINGOFF</span> <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_HOVERING">ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_HOVERING</span>  <a href="https://godoc.org/builtin#byte">byte</a> = 2
+    <span id="ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_FLYING">ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_FLYING</span>    <a href="https://godoc.org/builtin#byte">byte</a> = 3
+    <span id="ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_LANDING">ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_LANDING</span>   <a href="https://godoc.org/builtin#byte">byte</a> = 4
+    <span id="ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_EMERGENCY">ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_EMERGENCY</span> <a href="https://godoc.org/builtin#byte">byte</a> = 5
+    <span id="ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_MAX">ARCOMMANDS_ARDRONE3_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_MAX</span>       <a href="https://godoc.org/builtin#byte">byte</a> = 6
+
+    <span class="com">// eARCOMMANDS_ARDRONE3_ANIMATIONS_FLIP_DIRECTION;</span>
+    <span id="ARCOMMANDS_ARDRONE3_ANIMATIONS_FLIP_DIRECTION_FRONT">ARCOMMANDS_ARDRONE3_ANIMATIONS_FLIP_DIRECTION_FRONT</span> <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARCOMMANDS_ARDRONE3_ANIMATIONS_FLIP_DIRECTION_BACK">ARCOMMANDS_ARDRONE3_ANIMATIONS_FLIP_DIRECTION_BACK</span>  <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="ARCOMMANDS_ARDRONE3_ANIMATIONS_FLIP_DIRECTION_RIGHT">ARCOMMANDS_ARDRONE3_ANIMATIONS_FLIP_DIRECTION_RIGHT</span> <a href="https://godoc.org/builtin#byte">byte</a> = 2
+    <span id="ARCOMMANDS_ARDRONE3_ANIMATIONS_FLIP_DIRECTION_LEFT">ARCOMMANDS_ARDRONE3_ANIMATIONS_FLIP_DIRECTION_LEFT</span>  <a href="https://godoc.org/builtin#byte">byte</a> = 3
+    <span id="ARCOMMANDS_ARDRONE3_ANIMATIONS_FLIP_DIRECTION_MAX">ARCOMMANDS_ARDRONE3_ANIMATIONS_FLIP_DIRECTION_MAX</span>   <a href="https://godoc.org/builtin#byte">byte</a> = 4
+
+    <span class="com">// eARCOMMANDS_ID_COMMON_CLASS</span>
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_NETWORK">ARCOMMANDS_ID_COMMON_CLASS_NETWORK</span>             <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_NETWORKEVENT">ARCOMMANDS_ID_COMMON_CLASS_NETWORKEVENT</span>        <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_SETTINGS">ARCOMMANDS_ID_COMMON_CLASS_SETTINGS</span>            <a href="https://godoc.org/builtin#byte">byte</a> = 2
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_SETTINGSSTATE">ARCOMMANDS_ID_COMMON_CLASS_SETTINGSSTATE</span>       <a href="https://godoc.org/builtin#byte">byte</a> = 3
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_COMMON">ARCOMMANDS_ID_COMMON_CLASS_COMMON</span>              <a href="https://godoc.org/builtin#byte">byte</a> = 4
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_COMMONSTATE">ARCOMMANDS_ID_COMMON_CLASS_COMMONSTATE</span>         <a href="https://godoc.org/builtin#byte">byte</a> = 5
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_OVERHEAT">ARCOMMANDS_ID_COMMON_CLASS_OVERHEAT</span>            <a href="https://godoc.org/builtin#byte">byte</a> = 6
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_OVERHEATSTATE">ARCOMMANDS_ID_COMMON_CLASS_OVERHEATSTATE</span>       <a href="https://godoc.org/builtin#byte">byte</a> = 7
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_CONTROLLERSTATE">ARCOMMANDS_ID_COMMON_CLASS_CONTROLLERSTATE</span>     <a href="https://godoc.org/builtin#byte">byte</a> = 8
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_WIFISETTINGS">ARCOMMANDS_ID_COMMON_CLASS_WIFISETTINGS</span>        <a href="https://godoc.org/builtin#byte">byte</a> = 9
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_WIFISETTINGSSTATE">ARCOMMANDS_ID_COMMON_CLASS_WIFISETTINGSSTATE</span>   <a href="https://godoc.org/builtin#byte">byte</a> = 10
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_MAVLINK">ARCOMMANDS_ID_COMMON_CLASS_MAVLINK</span>             <a href="https://godoc.org/builtin#byte">byte</a> = 11
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_MAVLINKSTATE">ARCOMMANDS_ID_COMMON_CLASS_MAVLINKSTATE</span>        <a href="https://godoc.org/builtin#byte">byte</a> = 12
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_CALIBRATION">ARCOMMANDS_ID_COMMON_CLASS_CALIBRATION</span>         <a href="https://godoc.org/builtin#byte">byte</a> = 13
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_CALIBRATIONSTATE">ARCOMMANDS_ID_COMMON_CLASS_CALIBRATIONSTATE</span>    <a href="https://godoc.org/builtin#byte">byte</a> = 14
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_CAMERASETTINGSSTATE">ARCOMMANDS_ID_COMMON_CLASS_CAMERASETTINGSSTATE</span> <a href="https://godoc.org/builtin#byte">byte</a> = 15
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_GPS">ARCOMMANDS_ID_COMMON_CLASS_GPS</span>                 <a href="https://godoc.org/builtin#byte">byte</a> = 16
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_FLIGHTPLANSTATE">ARCOMMANDS_ID_COMMON_CLASS_FLIGHTPLANSTATE</span>     <a href="https://godoc.org/builtin#byte">byte</a> = 17
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_FLIGHTPLANEVENT">ARCOMMANDS_ID_COMMON_CLASS_FLIGHTPLANEVENT</span>     <a href="https://godoc.org/builtin#byte">byte</a> = 19
+    <span id="ARCOMMANDS_ID_COMMON_CLASS_ARLIBSVERSIONSSTATE">ARCOMMANDS_ID_COMMON_CLASS_ARLIBSVERSIONSSTATE</span> <a href="https://godoc.org/builtin#byte">byte</a> = 18
+
+    <span class="com">// eARCOMMANDS_ID_ARDRONE3_PILOTING_CMD</span>
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_FLATTRIM">ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_FLATTRIM</span>        <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_TAKEOFF">ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_TAKEOFF</span>         <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_PCMD">ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_PCMD</span>            <a href="https://godoc.org/builtin#byte">byte</a> = 2
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_LANDING">ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_LANDING</span>         <a href="https://godoc.org/builtin#byte">byte</a> = 3
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_EMERGENCY">ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_EMERGENCY</span>       <a href="https://godoc.org/builtin#byte">byte</a> = 4
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_NAVIGATEHOME">ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_NAVIGATEHOME</span>    <a href="https://godoc.org/builtin#byte">byte</a> = 5
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_AUTOTAKEOFFMODE">ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_AUTOTAKEOFFMODE</span> <a href="https://godoc.org/builtin#byte">byte</a> = 6
+    <span id="ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_MAX">ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_MAX</span>             <a href="https://godoc.org/builtin#byte">byte</a> = 7
+
+    <span class="com">// eARCOMMANDS_ID_ARDRONE3_MEDIARECORD_CMD</span>
+    <span id="ARCOMMANDS_ID_ARDRONE3_MEDIARECORD_CMD_PICTURE">ARCOMMANDS_ID_ARDRONE3_MEDIARECORD_CMD_PICTURE</span>   <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARCOMMANDS_ID_ARDRONE3_MEDIARECORD_CMD_VIDEO">ARCOMMANDS_ID_ARDRONE3_MEDIARECORD_CMD_VIDEO</span>     <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="ARCOMMANDS_ID_ARDRONE3_MEDIARECORD_CMD_PICTUREV2">ARCOMMANDS_ID_ARDRONE3_MEDIARECORD_CMD_PICTUREV2</span> <a href="https://godoc.org/builtin#byte">byte</a> = 2
+    <span id="ARCOMMANDS_ID_ARDRONE3_MEDIARECORD_CMD_VIDEOV2">ARCOMMANDS_ID_ARDRONE3_MEDIARECORD_CMD_VIDEOV2</span>   <a href="https://godoc.org/builtin#byte">byte</a> = 3
+    <span id="ARCOMMANDS_ID_ARDRONE3_MEDIARECORD_CMD_MAX">ARCOMMANDS_ID_ARDRONE3_MEDIARECORD_CMD_MAX</span>       <a href="https://godoc.org/builtin#byte">byte</a> = 4
+
+    <span class="com">// eARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEO_RECORD</span>
+    <span id="ARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEO_RECORD_STOP">ARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEO_RECORD_STOP</span>  <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEO_RECORD_START">ARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEO_RECORD_START</span> <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="ARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEO_RECORD_MAX">ARCOMMANDS_ARDRONE3_MEDIARECORD_VIDEO_RECORD_MAX</span>   <a href="https://godoc.org/builtin#byte">byte</a> = 2
+
+    <span class="com">// eARCOMMANDS_ID_COMMON_COMMON_CMD</span>
+    <span id="ARCOMMANDS_ID_COMMON_COMMON_CMD_ALLSTATES">ARCOMMANDS_ID_COMMON_COMMON_CMD_ALLSTATES</span>   <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARCOMMANDS_ID_COMMON_COMMON_CMD_CURRENTDATE">ARCOMMANDS_ID_COMMON_COMMON_CMD_CURRENTDATE</span> <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="ARCOMMANDS_ID_COMMON_COMMON_CMD_CURRENTTIME">ARCOMMANDS_ID_COMMON_COMMON_CMD_CURRENTTIME</span> <a href="https://godoc.org/builtin#byte">byte</a> = 2
+    <span id="ARCOMMANDS_ID_COMMON_COMMON_CMD_REBOOT">ARCOMMANDS_ID_COMMON_COMMON_CMD_REBOOT</span>      <a href="https://godoc.org/builtin#byte">byte</a> = 3
+    <span id="ARCOMMANDS_ID_COMMON_COMMON_CMD_MAX">ARCOMMANDS_ID_COMMON_COMMON_CMD_MAX</span>         <a href="https://godoc.org/builtin#byte">byte</a> = 4
+
+    <span class="com">// eARCOMMANDS_ID_COMMON_COMMONSTATE_CMD;</span>
+    <span id="ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_ALLSTATESCHANGED">ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_ALLSTATESCHANGED</span>                    <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_BATTERYSTATECHANGED">ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_BATTERYSTATECHANGED</span>                 <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_MASSSTORAGESTATELISTCHANGED">ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_MASSSTORAGESTATELISTCHANGED</span>         <a href="https://godoc.org/builtin#byte">byte</a> = 2
+    <span id="ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_MASSSTORAGEINFOSTATELISTCHANGED">ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_MASSSTORAGEINFOSTATELISTCHANGED</span>     <a href="https://godoc.org/builtin#byte">byte</a> = 3
+    <span id="ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_CURRENTDATECHANGED">ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_CURRENTDATECHANGED</span>                  <a href="https://godoc.org/builtin#byte">byte</a> = 4
+    <span id="ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_CURRENTTIMECHANGED">ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_CURRENTTIMECHANGED</span>                  <a href="https://godoc.org/builtin#byte">byte</a> = 5
+    <span id="ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_MASSSTORAGEINFOREMAININGLISTCHANGED">ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_MASSSTORAGEINFOREMAININGLISTCHANGED</span> <a href="https://godoc.org/builtin#byte">byte</a> = 6
+    <span id="ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_WIFISIGNALCHANGED">ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_WIFISIGNALCHANGED</span>                   <a href="https://godoc.org/builtin#byte">byte</a> = 6
+    <span id="ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_SENSORSSTATESLISTCHANGED">ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_SENSORSSTATESLISTCHANGED</span>            <a href="https://godoc.org/builtin#byte">byte</a> = 7
+    <span id="ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_MAX">ARCOMMANDS_ID_COMMON_COMMONSTATE_CMD_MAX</span>                                 <a href="https://godoc.org/builtin#byte">byte</a> = 8
+
+    <span class="com">// eARMEDIA_ENCAPSULER_CODEC</span>
+    <span id="CODEC_UNKNNOWN">CODEC_UNKNNOWN</span>     <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="CODEC_VLIB">CODEC_VLIB</span>         <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="CODEC_P264">CODEC_P264</span>         <a href="https://godoc.org/builtin#byte">byte</a> = 2
+    <span id="CODEC_MPEG4_VISUAL">CODEC_MPEG4_VISUAL</span> <a href="https://godoc.org/builtin#byte">byte</a> = 3
+    <span id="CODEC_MPEG4_AVC">CODEC_MPEG4_AVC</span>    <a href="https://godoc.org/builtin#byte">byte</a> = 4
+    <span id="CODEC_MOTION_JPEG">CODEC_MOTION_JPEG</span>  <a href="https://godoc.org/builtin#byte">byte</a> = 5
+
+    <span class="com">// eARMEDIA_ENCAPSULER_FRAME_TYPE;</span>
+    <span id="ARMEDIA_ENCAPSULER_FRAME_TYPE_UNKNNOWN">ARMEDIA_ENCAPSULER_FRAME_TYPE_UNKNNOWN</span> <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARMEDIA_ENCAPSULER_FRAME_TYPE_I_FRAME">ARMEDIA_ENCAPSULER_FRAME_TYPE_I_FRAME</span>  <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="ARMEDIA_ENCAPSULER_FRAME_TYPE_P_FRAME">ARMEDIA_ENCAPSULER_FRAME_TYPE_P_FRAME</span>  <a href="https://godoc.org/builtin#byte">byte</a> = 2
+    <span id="ARMEDIA_ENCAPSULER_FRAME_TYPE_JPEG">ARMEDIA_ENCAPSULER_FRAME_TYPE_JPEG</span>     <a href="https://godoc.org/builtin#byte">byte</a> = 3
+    <span id="ARMEDIA_ENCAPSULER_FRAME_TYPE_MAX">ARMEDIA_ENCAPSULER_FRAME_TYPE_MAX</span>      <a href="https://godoc.org/builtin#byte">byte</a> = 4
+
+    <span class="com">// eARNETWORK_MANAGER_INTERNAL_BUFFER_ID</span>
+    <span id="ARNETWORK_MANAGER_INTERNAL_BUFFER_ID_PING">ARNETWORK_MANAGER_INTERNAL_BUFFER_ID_PING</span> <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARNETWORK_MANAGER_INTERNAL_BUFFER_ID_PONG">ARNETWORK_MANAGER_INTERNAL_BUFFER_ID_PONG</span> <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="ARNETWORK_MANAGER_INTERNAL_BUFFER_ID_MAX">ARNETWORK_MANAGER_INTERNAL_BUFFER_ID_MAX</span>  <a href="https://godoc.org/builtin#byte">byte</a> = 3
+
+    <span class="com">// eARNETWORKAL_FRAME_TYPE</span>
+    <span id="ARNETWORKAL_FRAME_TYPE_UNINITIALIZED">ARNETWORKAL_FRAME_TYPE_UNINITIALIZED</span>    <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARNETWORKAL_FRAME_TYPE_ACK">ARNETWORKAL_FRAME_TYPE_ACK</span>              <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="ARNETWORKAL_FRAME_TYPE_DATA">ARNETWORKAL_FRAME_TYPE_DATA</span>             <a href="https://godoc.org/builtin#byte">byte</a> = 2
+    <span id="ARNETWORKAL_FRAME_TYPE_DATA_LOW_LATENCY">ARNETWORKAL_FRAME_TYPE_DATA_LOW_LATENCY</span> <a href="https://godoc.org/builtin#byte">byte</a> = 3
+    <span id="ARNETWORKAL_FRAME_TYPE_DATA_WITH_ACK">ARNETWORKAL_FRAME_TYPE_DATA_WITH_ACK</span>    <a href="https://godoc.org/builtin#byte">byte</a> = 4
+    <span id="ARNETWORKAL_FRAME_TYPE_MAX">ARNETWORKAL_FRAME_TYPE_MAX</span>              <a href="https://godoc.org/builtin#byte">byte</a> = 5
+
+    <span id="ARCOMMANDS_ID_ARDRONE3_SPEEDSETTINGS_CMD_MAXVERTICALSPEED">ARCOMMANDS_ID_ARDRONE3_SPEEDSETTINGS_CMD_MAXVERTICALSPEED</span> <a href="https://godoc.org/builtin#byte">byte</a> = 0
+    <span id="ARCOMMANDS_ID_ARDRONE3_SPEEDSETTINGS_CMD_MAXROTATIONSPEED">ARCOMMANDS_ID_ARDRONE3_SPEEDSETTINGS_CMD_MAXROTATIONSPEED</span> <a href="https://godoc.org/builtin#byte">byte</a> = 1
+    <span id="ARCOMMANDS_ID_ARDRONE3_SPEEDSETTINGS_CMD_HULLPROTECTION">ARCOMMANDS_ID_ARDRONE3_SPEEDSETTINGS_CMD_HULLPROTECTION</span>   <a href="https://godoc.org/builtin#byte">byte</a> = 2
+    <span id="ARCOMMANDS_ID_ARDRONE3_SPEEDSETTINGS_CMD_OUTDOOR">ARCOMMANDS_ID_ARDRONE3_SPEEDSETTINGS_CMD_OUTDOOR</span>          <a href="https://godoc.org/builtin#byte">byte</a> = 3
+)</pre></div>
+        
+
+        
+        
+
+        
+        
+        
+
+        
+        
+
+        
+          <h3 id="ARStreamACK" data-kind="t">type <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L29">ARStreamACK</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#ARStreamACK">¶</a> <a class="uses" title="List Uses of This Type" href="https://sourcegraph.com/-/godoc/refs?def=ARStreamACK&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h3>
+          <div class="decl" data-kind="d"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L29">❖</a><pre>type ARStreamACK struct {
+    <span id="ARStreamACK.FrameNumber">FrameNumber</span>    <a href="https://godoc.org/builtin#int">int</a>
+    <span id="ARStreamACK.HighPacketsAck">HighPacketsAck</span> <a href="https://godoc.org/builtin#uint64">uint64</a>
+    <span id="ARStreamACK.LowPacketsAck">LowPacketsAck</span>  <a href="https://godoc.org/builtin#uint64">uint64</a>
+}</pre></div>
+          
+          
+          
+  
+
+
+          
+
+          
+        
+          <h3 id="ARStreamFrame" data-kind="t">type <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L35">ARStreamFrame</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#ARStreamFrame">¶</a> <a class="uses" title="List Uses of This Type" href="https://sourcegraph.com/-/godoc/refs?def=ARStreamFrame&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h3>
+          <div class="decl" data-kind="d"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L35">❖</a><pre>type ARStreamFrame struct {
+    <span id="ARStreamFrame.FrameNumber">FrameNumber</span>       <a href="https://godoc.org/builtin#int">int</a>
+    <span id="ARStreamFrame.FrameFlags">FrameFlags</span>        <a href="https://godoc.org/builtin#int">int</a>
+    <span id="ARStreamFrame.FragmentNumber">FragmentNumber</span>    <a href="https://godoc.org/builtin#int">int</a>
+    <span id="ARStreamFrame.FragmentsPerFrame">FragmentsPerFrame</span> <a href="https://godoc.org/builtin#int">int</a>
+    <span id="ARStreamFrame.Frame">Frame</span>             []<a href="https://godoc.org/builtin#byte">byte</a>
+}</pre></div>
+          
+          
+          
+  
+
+
+          
+            <h4 id="NewARStreamFrame" data-kind="f">func <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L43">NewARStreamFrame</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#NewARStreamFrame">¶</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=NewARStreamFrame&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L43">❖</a><pre>func NewARStreamFrame(buf []<a href="https://godoc.org/builtin#byte">byte</a>) <a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#ARStreamFrame">ARStreamFrame</a></pre></div>
+            
+  
+
+          
+
+          
+        
+          <h3 id="Bebop" data-kind="t">type <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L157">Bebop</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">¶</a> <a class="uses" title="List Uses of This Type" href="https://sourcegraph.com/-/godoc/refs?def=Bebop&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h3>
+          <div class="decl" data-kind="d"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L157">❖</a><pre>type Bebop struct {
+    <span id="Bebop.IP">IP</span>      <a href="https://godoc.org/builtin#string">string</a>
+    <span id="Bebop.NavData">NavData</span> map[<a href="https://godoc.org/builtin#string">string</a>]<a href="https://godoc.org/builtin#string">string</a>
+    <span id="Bebop.Pcmd">Pcmd</span>    <a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Pcmd">Pcmd</a>
+
+    <span id="Bebop.C2dPort">C2dPort</span>       <a href="https://godoc.org/builtin#int">int</a>
+    <span id="Bebop.D2cPort">D2cPort</span>       <a href="https://godoc.org/builtin#int">int</a>
+    <span id="Bebop.DiscoveryPort">DiscoveryPort</span> <a href="https://godoc.org/builtin#int">int</a>
+    <span class="com">// contains filtered or unexported fields</span>
+}</pre></div>
+          
+          
+          
+  
+
+
+          
+            <h4 id="New" data-kind="f">func <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L173">New</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#New">¶</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=New&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L173">❖</a><pre>func New() *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a></pre></div>
+            
+  
+
+          
+
+          
+            <h4 id="Bebop.Backward" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L399">Backward</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Backward">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FBackward&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L399">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) Backward(val <a href="https://godoc.org/builtin#int">int</a>) <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.Clockwise" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L414">Clockwise</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Clockwise">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FClockwise&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L414">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) Clockwise(val <a href="https://godoc.org/builtin#int">int</a>) <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.Connect" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L234">Connect</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Connect">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FConnect&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L234">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) Connect() <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.CounterClockwise" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L419">CounterClockwise</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.CounterClockwise">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FCounterClockwise&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L419">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) CounterClockwise(val <a href="https://godoc.org/builtin#int">int</a>) <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.Discover" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L200">Discover</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Discover">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FDiscover&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L200">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) Discover() <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.Down" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L389">Down</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Down">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FDown&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L389">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) Down(val <a href="https://godoc.org/builtin#int">int</a>) <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.FlatTrim" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L308">FlatTrim</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.FlatTrim">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FFlatTrim&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L308">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) FlatTrim() <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.Forward" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L394">Forward</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Forward">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FForward&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L394">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) Forward(val <a href="https://godoc.org/builtin#int">int</a>) <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.GenerateAllStates" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L327">GenerateAllStates</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.GenerateAllStates">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FGenerateAllStates&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L327">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) GenerateAllStates() <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.HullProtection" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L594">HullProtection</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.HullProtection">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FHullProtection&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L594">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) HullProtection(protect <a href="https://godoc.org/builtin#bool">bool</a>) <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.Land" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L365">Land</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Land">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FLand&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L365">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) Land() <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.Left" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L409">Left</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Left">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FLeft&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L409">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) Left(val <a href="https://godoc.org/builtin#int">int</a>) <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.Outdoor" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L620">Outdoor</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Outdoor">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FOutdoor&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L620">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) Outdoor(outdoor <a href="https://godoc.org/builtin#bool">bool</a>) <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.Right" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L404">Right</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Right">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FRight&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L404">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) Right(val <a href="https://godoc.org/builtin#int">int</a>) <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.StartRecording" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L548">StartRecording</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.StartRecording">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FStartRecording&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L548">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) StartRecording() <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.Stop" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L424">Stop</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Stop">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FStop&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L424">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) Stop() <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.StopRecording" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L555">StopRecording</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.StopRecording">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FStopRecording&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L555">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) StopRecording() <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.TakeOff" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L346">TakeOff</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.TakeOff">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FTakeOff&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L346">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) TakeOff() <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.Up" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L384">Up</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Up">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FUp&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L384">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) Up(val <a href="https://godoc.org/builtin#int">int</a>) <a href="https://godoc.org/builtin#error">error</a></pre></div>
+            
+  
+
+          
+            <h4 id="Bebop.Video" data-kind="m">func (*Bebop) <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L590">Video</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop.Video">¶</a> <a class="uses" title="List Method Callers" href="https://sourcegraph.com/-/godoc/refs?def=Bebop%2FVideo&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L590">❖</a><pre>func (b *<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Bebop">Bebop</a>) Video() chan []<a href="https://godoc.org/builtin#byte">byte</a></pre></div>
+            
+  
+
+          
+        
+          <h3 id="NetworkFrame" data-kind="t">type <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L81">NetworkFrame</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#NetworkFrame">¶</a> <a class="uses" title="List Uses of This Type" href="https://sourcegraph.com/-/godoc/refs?def=NetworkFrame&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h3>
+          <div class="decl" data-kind="d"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L81">❖</a><pre>type NetworkFrame struct {
+    <span id="NetworkFrame.Type">Type</span> <a href="https://godoc.org/builtin#int">int</a>
+    <span id="NetworkFrame.Seq">Seq</span>  <a href="https://godoc.org/builtin#int">int</a>
+    <span id="NetworkFrame.Id">Id</span>   <a href="https://godoc.org/builtin#int">int</a>
+    <span id="NetworkFrame.Size">Size</span> <a href="https://godoc.org/builtin#int">int</a>
+    <span id="NetworkFrame.Data">Data</span> []<a href="https://godoc.org/builtin#byte">byte</a>
+}</pre></div>
+          
+          
+          
+  
+
+
+          
+            <h4 id="NewNetworkFrame" data-kind="f">func <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L89">NewNetworkFrame</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#NewNetworkFrame">¶</a> <a class="uses" title="List Function Callers" href="https://sourcegraph.com/-/godoc/refs?def=NewNetworkFrame&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h4>
+            <div class="funcdecl decl"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L89">❖</a><pre>func NewNetworkFrame(buf []<a href="https://godoc.org/builtin#byte">byte</a>) <a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#NetworkFrame">NetworkFrame</a></pre></div>
+            
+  
+
+          
+
+          
+        
+          <h3 id="Pcmd" data-kind="t">type <a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L148">Pcmd</a> <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#Pcmd">¶</a> <a class="uses" title="List Uses of This Type" href="https://sourcegraph.com/-/godoc/refs?def=Pcmd&amp;pkg=github.com%2Fhybridgroup%2Fgobot%2Fplatforms%2Fbebop%2Fclient&amp;repo=github.com%2Fhybridgroup%2Fgobot">Uses</a></h3>
+          <div class="decl" data-kind="d"><a title="View Source" href="https://github.com/hybridgroup/gobot/blob/master/platforms/bebop/client/client.go#L148">❖</a><pre>type Pcmd struct {
+    <span id="Pcmd.Flag">Flag</span>  <a href="https://godoc.org/builtin#int">int</a>
+    <span id="Pcmd.Roll">Roll</span>  <a href="https://godoc.org/builtin#int">int</a>
+    <span id="Pcmd.Pitch">Pitch</span> <a href="https://godoc.org/builtin#int">int</a>
+    <span id="Pcmd.Yaw">Yaw</span>   <a href="https://godoc.org/builtin#int">int</a>
+    <span id="Pcmd.Gaz">Gaz</span>   <a href="https://godoc.org/builtin#int">int</a>
+    <span id="Pcmd.Psi">Psi</span>   <a href="https://godoc.org/builtin#float32">float32</a>
+}</pre></div>
+          
+          
+          
+  
+
+
+          
+
+          
+        
+        
+
+
+
+<h3 id="pkg-subdirectories">Directories <a class="permalink" href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#pkg-subdirectories">¶</a></h3>
+    <table class="table table-condensed">
+    <thead><tr><th>Path</th><th>Synopsis</th></tr></thead>
+    <tbody><tr><td><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client/examples">examples</a></td><td>This example will connect to the Bebop and stream it's video to a webpage via ffserver.</td></tr></tbody>
+    </table>
+
+<div id="x-pkginfo">
+
+  <form name="x-refresh" method="POST" action="https://godoc.org/-/refresh"><input type="hidden" name="path" value="github.com/hybridgroup/gobot/platforms/bebop/client"></form>
+  <p>Package client imports <a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client?imports">5 packages</a> (<a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client?import-graph">graph</a>) and is imported by <a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client?importers">2 packages</a>.
+  Updated <span class="timeago" title="2016-02-25">4 months ago</span>.
+  <a href="javascript:document.getElementsByName(&#39;x-refresh&#39;)[0].submit();" title="Refresh this page from the source.">Refresh now</a>.
+  <a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client?tools">Tools</a> for package owners.
+  
+
+
+</p></div>
+
+        <div id="x-jump" tabindex="-1" class="modal">
+            <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Jump to identifier</h4>
+                <br class="clearfix">
+                <input id="x-jump-filter" class="form-control" autocomplete="off" type="text">
+              </div>
+              <div id="x-jump-body" class="modal-body" style="height: 260px; overflow: auto;">
+                <div id="x-jump-list" class="list-group" style="margin-bottom: 0;"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+  
+
+</div>
+<div id="x-footer" class="clearfix">
+  <div class="container">
+    <a href="https://github.com/golang/gddo/issues">Website Issues</a>
+    <span class="text-muted">|</span> <a href="http://golang.org/">Go Language</a>
+    <span class="pull-right"><a href="https://godoc.org/github.com/hybridgroup/gobot/platforms/bebop/client#">Back to top</a></span>
+  </div>
+</div>
+
+<div id="x-shortcuts" tabindex="-1" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Keyboard shortcuts</h4>
+        </div>
+        <div class="modal-body">
+          <table>
+          <tbody><tr><td align="right"><b>?</b></td><td> : This menu</td></tr>
+          <tr><td align="right"><b>/</b></td><td> : Search site</td></tr>
+          <tr><td align="right"><b>f</b></td><td> : Jump to identifier</td></tr>
+          <tr><td align="right"><b>g</b> then <b>g</b></td><td> : Go to top of page</td></tr>
+          <tr><td align="right"><b>g</b> then <b>b</b></td><td> : Go to end of page</td></tr>
+          <tr><td align="right"><b>g</b> then <b>i</b></td><td> : Go to index</td></tr>
+          <tr><td align="right"><b>g</b> then <b>e</b></td><td> : Go to examples</td></tr>
+          </tbody></table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" async="" src="./client - GoDoc_files/ga.js"></script><script src="./client - GoDoc_files/jquery-2.0.3.min.js"></script>
+<script src="./client - GoDoc_files/bootstrap.min.js"></script>
+<script src="./client - GoDoc_files/site.js"></script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11222381-8']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+</body></html>
