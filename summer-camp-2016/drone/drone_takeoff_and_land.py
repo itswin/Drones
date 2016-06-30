@@ -9,7 +9,6 @@ drone = Bebop( metalog=None, onlyIFrames=True )
 drone.trim()
 print("Connected.")
 
-
 drone.takeoff()
 drone.wait(5)
 drone.land()
