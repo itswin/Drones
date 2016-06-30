@@ -1,5 +1,4 @@
 import cv2
-
 from bebop import Bebop
 
 cnt = 0
@@ -12,10 +11,9 @@ def videoCallback( frame, drone, debug=False ):
        f.write(frame[-1])
        f.flush()
    else:
-       cnt = cnt + 1
-       cv2.imshow("image", frame)
-       cv2.waitKey(10)
-
+        cnt = cnt + 1
+        cv2.imshow("image", frame)
+        cv2.waitKey(10)
 
 print("Connecting to drone..")
 drone = Bebop( metalog=None, onlyIFrames=False, jpegStream=True )
@@ -23,6 +21,4 @@ drone.videoCbk = videoCallback
 drone.videoEnable()
 print("Connected.")
 for i in xrange(10000):
-    drone.update();
-
-print("Battery:", drone.battery)
+    drone.update()
