@@ -327,6 +327,11 @@ class Bebop:
             self.update( movePCMDCmd( True, 0, 0, 0, 0 ) )
         self.update(cmd=None)
 
+    def rename(self, name):
+        self.update( cmd=rename(name) )
+        self.wait(5)
+        self.update( cmd=requestAllSettingsCmd() )
+
 
 ###############################################################################################
 
