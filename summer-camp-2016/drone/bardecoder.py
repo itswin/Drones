@@ -36,5 +36,3 @@ class Barcode:
         self.type = symbol.type
         self.location = symbol.location
         self.value = symbol.data
-
-
