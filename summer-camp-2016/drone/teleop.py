@@ -7,18 +7,32 @@ import time
 
 def videoCallback( frame, drone, debug=False ):
     global cnt
+    global done
     if isinstance(frame, tuple):
        f.write(frame[-1])
        f.flush()
     else:
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        if cnt % 15 == 0:
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+            for (x, y, w, h) in faces:
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
 
-        drone.barcodes = decoder.decode(frame)
-        for i in drone.barcodes:
-            cv2.polylines(frame, [np.int32(i.location)], True, 255, 3, 16)
+        if cnt % 15 == 5:
+            drone.barcodes = decoder.decode(frame)
+            for i in drone.barcodes:
+                cv2.polylines(frame, [np.int32(i.location)], True, 255, 3, 16)
+                print("Barcode found:" + i.value)
 
-        drone.frameWidth = np.size(frame, 1)
-        drone.frameHeight = np.size(frame, 0)
+        if drone.frameWidth == 0:
+            drone.frameWidth = np.size(frame, 1)
+        if drone.frameHeight == 0:
+            drone.frameHeight = np.size(frame, 0)
+
+        if drone.pictureBoolean:
+            cv2.imwrite('savedImage.jpg', frame)
+            print('Picture saved...')
+            drone.pictureBoolean = False
 
         cnt += 1
         cv2.imshow("Drone Video", frame)
@@ -41,16 +55,19 @@ def clip(value, low, high):
 cnt = 0
 frames = 0
 lastFrames = 0
+
+# Video variables
 f = open( "./images/video.h264", "wb" )
 decoder = Decoder()
+face_cascade = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
 
 current_milli_time = lambda: int(round(time.time() * 1000))
 
 print("Connecting to drone...")
-drone = Bebop( metalog=None, onlyIFrames=True, jpegStream=False)
+drone = Bebop( metalog=None, onlyIFrames=True, jpegStream=True)
 drone.trim()
-# drone.videoCbk = videoCallback
-# drone.videoEnable()
+drone.videoCbk = videoCallback
+drone.videoEnable()
 print("Connected.")
 
 pygame.init()
@@ -109,10 +126,14 @@ while not done:
             if secondsCounter % 5 == 0:
                 print("Battery: " + str(drone.battery))
 
-
         # Deltas for controlling the camera
         tiltDelta = 0
         panDelta = 0
+
+        # Press X to take a picture
+        if joystick.get_button(2) and not drone.pictureBoolean:
+            print('Taking picture...')
+            drone.pictureBoolean = True
 
         # A and Back to emergency land
         if joystick.get_button(0) == 1 and joystick.get_button(6) == 1:
@@ -163,6 +184,7 @@ while not done:
         drone.update(cmd=movePCMDCmd(True, roll, pitch, yaw, gaz))
 
         # --- Move camera ---
+
         # Triggers to tilt
         if not(joystick.get_button(0) == 1) and joystick.get_axis(2) > 0.05:
             tiltDelta = scale(joystick.get_axis(2), -10)
@@ -181,13 +203,18 @@ while not done:
         pan = clip(pan + panDelta, panMin, panMax)
 
         # Reset camera on LB
-        if joystick.get_button(5) == 1:
+        if joystick.get_button(4) == 1:
             tilt = 0
             pan = 0
+
+        if joystick.get_button(5) == 1:
+            print("Flying to altitude: 1.5")
+            drone.flyToAltitude(1.5)
 
         drone.moveCamera(tilt, pan)
 
         # Barcode testing
+        # Press Y to center
         if len(drone.barcodes) > 0 and joystick.get_button(3) == 1:
             printCounter += 1
             if printCounter > 5:
