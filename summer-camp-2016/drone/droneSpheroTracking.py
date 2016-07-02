@@ -4,6 +4,7 @@ import pygame
 import time
 from commands import *
 import numpy
+from mergeSort import *
 
 cnt = 0
 f = open( "./images/video.h264", "wb" )
@@ -15,55 +16,75 @@ def videoCallback( frame, drone, debug=False ):
         f.write(frame[-1])
         f.flush()
     else:
+        # Initialize the frame size for drone adjustment
         if drone.frameWidth == 0:
             drone.frameWidth = numpy.size(frame, 1)
         if drone.frameHeight == 0:
             drone.frameHeight = numpy.size(frame, 0)
 
-        # convert image to grayscale and blur it
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        gray = cv2.GaussianBlur(gray, (21, 21), 0)
-
+        # Initialize variables to compare the current frame to
         if drone.thisFrame is None:
             drone.lastFrame = frame
         else:
             drone.lastFrame = drone.thisFrame
         drone.thisFrame = frame
 
+        # Convert frames to grayscale and blur them
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        gray = cv2.GaussianBlur(gray, (21, 21), 0)
+
         grayLastFrame = cv2.cvtColor(drone.lastFrame, cv2.COLOR_BGR2GRAY)
         grayLastFrame = cv2.GaussianBlur(grayLastFrame, (21, 21), 0)
 
-        # if (cnt % 2) == 0:
-        #     drone.backgroundMotionDetectionImage = gray
-
-        # compute the absolute difference between the current frame and
+        # compute the absolute difference between the current frame and the last frame
         frameDelta = cv2.absdiff(grayLastFrame, gray)
-        thresh = cv2.threshold(frameDelta, 25, 255, cv2.THRESH_BINARY)[1]
 
-        # dilate the thresholded image to fill in holes, then find contours
-        # on thresholded image
-        thresh = cv2.dilate(thresh, None, iterations=2)
-        (cnts, _, x) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        # Find edges after detecting motion
+        edges = cv2.Canny(frameDelta, 5, 19l)
 
-        for c in cnts:
-            # if the contour is too small, ignore it
-            # if cv2.contourArea(c) < 100:
-            #     continue
+        # Find circles after detecting edges
+        circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, 1, 20,
+                                   param1=50, param2=30, minRadius=18, maxRadius=32)
 
-            # compute the bounding box for the contour, draw it on the frame,
-            # and update the text
-            (x, y, w, h) = cv2.boundingRect(c)
+        if not circles is None:
+            circles = numpy.uint16(numpy.around(circles))
+            listX = []
+            listY = []
+            listR = []
 
-            drone.objectCenterX = (x + w) / 2
-            drone.objectCenterY = (y + h) / 2
+            for i in circles[0, :]:
+                # draw the outer circle
+                # cv2.circle(edges, (i[0], i[1]), i[2], (255, 255, 255), 2)
+                # draw the center of the circle
+                # cv2.circle(edges, (i[0], i[1]), 2, (255, 255, 255), 3)
 
-            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                # Save the centers and radii
+                listX.append(i[0])
+                listY.append(i[1])
+                listR.append(i[2])
+                # print("Edges circle center at: " + str(i[0]) + ", " + str(i[1]))
 
-        cv2.imshow('delta', frameDelta)
-        cnt = cnt + 1
-        cv2.imshow("Frame", frame)
+            # Sort the centers and radii and print/draw the median
+            sortedX = mergeSort(listX)
+            sortedY = mergeSort(listY)
+            sortedR = mergeSort(listR)
+
+            medianX = sortedX[len(sortedX // 2)]
+            medianY = sortedY[len(sortedY // 2)]
+            medianR = sortedR[len(sortedR // 2)]
+
+            drone.objectCenterX = medianX
+            drone.objectCenterY = medianY
+
+            cv2.circle(edges, (medianX, medianY), medianR, (255,255,255), 2)
+            cv2.circle(edges, (medianX, medianY), 2, (255,255,255), 2)
+            print("Median edges circle center: " + sortedX[len(sortedX // 2)] + ", " + sortedY[len(sortedY // 2)])
+
+        cnt += 1
+        cv2.imshow("Drone Video", frame)
+        cv2.imshow("Motion Detection", frameDelta)
+        cv2.imshow("Motion Detection Edges", edges)
         cv2.waitKey(1)
-
 
 def scale(value, scaler):
     if abs(value) < 0.03:
@@ -90,8 +111,6 @@ drone = Bebop( metalog=None, onlyIFrames=True, jpegStream=True)
 drone.trim()
 drone.videoCbk = videoCallback
 drone.videoEnable()
-for i in xrange(20):
-    drone.update()
 print("Connected.")
 
 pygame.init()
@@ -158,6 +177,7 @@ while not done:
                 print("Finding Sphero")
                 print(xCenteringPower)
                 print(yCenteringPower)
+                printCounter += 1
 
             drone.update(cmd=movePCMDCmd(True, xCenteringPower, yCenteringPower, 0, 0))
 
