@@ -1,13 +1,12 @@
 import numpy as np
 import cv2
 
-
 #img1 = cv2.imread('/home/user1/opencv/samples/data/box.png',0)          # queryImage
 img1 = cv2.imread('./templates/techgarage-logo.png',0)          # queryImage
 img2 = cv2.imread('/home/user1/opencv/samples/data/box_in_scene.png',0) # trainImage
 
 # Initiate SIFT detector
-#sift = cv2.xfeatures2d.SURF_create(1000)
+# sift = cv2.xfeatures2d.SURF_create(1000)
 sift = cv2.xfeatures2d.SIFT_create()
 
 # find the keypoints and descriptors with SIFT
@@ -17,7 +16,6 @@ bf = cv2.BFMatcher()
 cam = cv2.VideoCapture(0)
 #cam.set(cv2.CAP_PROP_FRAME_WIDTH,320)
 #cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
-
 
 while True:
     (grabbed, frame) = cam.read()
