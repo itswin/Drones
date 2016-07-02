@@ -1,11 +1,13 @@
 import cv2
 import numpy as np
+from mergeSort import *
 
 camera = cv2.VideoCapture(0)
 grabbed, frame = camera.read()
 
-print("Frame width: " + str(np.size(frame, 1)))
-print("Frame height: " + str(np.size(frame, 0)))
+if grabbed:
+    print("Frame width: " + str(np.size(frame, 1)))
+    print("Frame height: " + str(np.size(frame, 0)))
 
 printCounter = 0
 
@@ -42,23 +44,23 @@ while True:
 
     # compute the absolute difference between the current frame and
     frameDelta = cv2.absdiff(grayLastFrame, gray)
-    thresh = cv2.threshold(frameDelta, 25, 255, cv2.THRESH_BINARY)[1]
+    # thresh = cv2.threshold(frameDelta, 25, 255, cv2.THRESH_BINARY)[1]
+    #
+    # # dilate the thresholded image to fill in holes, then find contours
+    # # on thresholded image
+    # thresh = cv2.dilate(thresh, None, iterations=2)
+    # (cnts, _, x) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-    # dilate the thresholded image to fill in holes, then find contours
-    # on thresholded image
-    thresh = cv2.dilate(thresh, None, iterations=2)
-    (cnts, _, x) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
-    for c in cnts:
-        # if the contour is too small, ignore it
-        # if cv2.contourArea(c) < 100:
-        #     continue
-
-        # compute the bounding box for the contour, draw it on the frame,
-        # and update the text
-        (x, y, w, h) = cv2.boundingRect(c)
-
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    # for c in cnts:
+    #     # if the contour is too small, ignore it
+    #     # if cv2.contourArea(c) < 100:
+    #     #     continue
+    #
+    #     # compute the bounding box for the contour, draw it on the frame,
+    #     # and update the text
+    #     (x, y, w, h) = cv2.boundingRect(c)
+    #
+    #     cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
 
     # grayFrameDelta = cv2.cvtColor(frameDelta, cv2.COLOR_BGR2GRAY)
@@ -70,11 +72,6 @@ while True:
                             param1=50, param2=30, minRadius=minCircleRadius, maxRadius=maxCircleRadius)
 
     if not circles is None:
-        # if (printCounter % 10) == 0:
-        #     print("No circles found")
-        #     print
-        #     printCounter += 1
-    # else:
         circles = np.uint16(np.around(circles))
         centers = []
 
@@ -86,27 +83,22 @@ while True:
             centers.append(i)
             print("Edges circle center at: " + str(i[0]) + ", " + str(i[1]))
 
-        averageX = 0
-        averageY = 0
+        listX = []
+        listY = []
 
         for i in centers:
-            averageX += i[0]
-            averageY += i[1]
+            listX.append(i[0])
+            listY.append(i[1])
 
-        averageX /= len(centers)
-        averageY /= len(centers)
+        sortedX = mergeSort(listX)
+        sortedY = mergeSort(listY)
 
-        print("Average edges circle center: " + str(averageX) + ", " + str(averageY))
+        print("Median edges circle center: " + str(sortedX[len(sortedX) // 2]) + ", " + str(sortedY[len(sortedY) // 2]))
 
     circles = cv2.HoughCircles(frameDelta, cv2.HOUGH_GRADIENT, 1, 20,
                             param1=50, param2=30, minRadius=minCircleRadius, maxRadius=maxCircleRadius)
 
     if not circles is None:
-        # if (printCounter % 10) == 0:
-        #     print("No circles found")
-        #     print
-        #     printCounter += 1
-        # else:
         circles = np.uint16(np.around(circles))
 
         for i in circles[0, :]:
@@ -116,17 +108,17 @@ while True:
             cv2.circle(frameDelta, (i[0], i[1]), 2, (255, 255, 255), 3)
             print("Motion circle center at: " + str(i[0]) + ", " + str(i[1]))
 
-        averageX = 0
-        averageY = 0
+        listX = []
+        listY = []
 
         for i in centers:
-            averageX += i[0]
-            averageY += i[1]
+            listX.append(i[0])
+            listY.append(i[1])
 
-        averageX /= len(centers)
-        averageY /= len(centers)
+        sortedX = mergeSort(listX)
+        sortedY = mergeSort(listY)
 
-        print("Average motion circle center: " + str(averageX) + ", " + str(averageY))
+        print("Median motion circle center: " + str(sortedX[len(sortedX) // 2]) + ", " + str(sortedY[len(sortedY) // 2]))
 
     # Display all the frames
     cv2.imshow('original', frame)
