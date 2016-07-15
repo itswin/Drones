@@ -104,16 +104,24 @@ class Bebop:
         self.config()
         self.commandSender.start()
 
-        self.barcodes = []
+        # Video variables
         self.frameWidth = 0
         self.frameHeight = 0
         self.pictureBoolean = False
+        self.barcodes = []
+
+        # Sphero tracking variables
         self.findSphero = False
+        self.sinceLastSphero = 0
         self.lastFrame = None
         self.thisFrame = None
         self.moveScaler = 0
         self.objectCenterX = 0
         self.objectCenterY = 0
+        self.minEdgeVal = 0
+        self.maxEdgeVal = 0
+        self.minCircleRadius = 0
+        self.maxCircleRadius = 0
 
         if self.jpegStream:
             self.videoFrameProcessor = VideoFrames(onlyIFrames=False, verbose=False)
