@@ -1,13 +1,13 @@
 import cv2
-import numpy as np
-from mergeSort import *
+import numpy
+from mergeSort import mergeSort
 
 camera = cv2.VideoCapture(0)
 grabbed, frame = camera.read()
 
 if grabbed:
-    print("Frame width: " + str(np.size(frame, 1)))
-    print("Frame height: " + str(np.size(frame, 0)))
+    print("Frame width: " + str(numpy.size(frame, 1)))
+    print("Frame height: " + str(numpy.size(frame, 0)))
 
 printCounter = 0
 
@@ -16,11 +16,11 @@ thisFrame = None
 
 # Range for amount of edges detected
 minEdgeVal = 5
-maxEdgeVal = 19
+maxEdgeVal = 20
 
 # Range of circle radii measured in pixels
-minCircleRadius = 100
-maxCircleRadius = 175
+minCircleRadius = 60
+maxCircleRadius = 100
 
 while True:
     grabbed, frame = camera.read()
@@ -33,92 +33,113 @@ while True:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (21, 21), 0)
 
+    # Save frames to compare to on next iteration
     if thisFrame is None:
         lastFrame = frame
     else:
         lastFrame = thisFrame
     thisFrame = frame
 
+    # Grays the last frame and then blurs it
     grayLastFrame = cv2.cvtColor(lastFrame, cv2.COLOR_BGR2GRAY)
     grayLastFrame = cv2.GaussianBlur(grayLastFrame, (21, 21), 0)
 
     # compute the absolute difference between the current frame and
     frameDelta = cv2.absdiff(grayLastFrame, gray)
-    # thresh = cv2.threshold(frameDelta, 25, 255, cv2.THRESH_BINARY)[1]
-    #
-    # # dilate the thresholded image to fill in holes, then find contours
-    # # on thresholded image
-    # thresh = cv2.dilate(thresh, None, iterations=2)
-    # (cnts, _, x) = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-    # for c in cnts:
-    #     # if the contour is too small, ignore it
-    #     # if cv2.contourArea(c) < 100:
-    #     #     continue
-    #
-    #     # compute the bounding box for the contour, draw it on the frame,
-    #     # and update the text
-    #     (x, y, w, h) = cv2.boundingRect(c)
-    #
-    #     cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
-
-    # grayFrameDelta = cv2.cvtColor(frameDelta, cv2.COLOR_BGR2GRAY)
-
+    # Find edges after motion detection
     edges = cv2.Canny(frameDelta, minEdgeVal, maxEdgeVal)
+
+    # Dilate/erode the edges to make circles easier to detect
+    kernel = numpy.ones((5, 5), numpy.uint8)
+    edges = cv2.dilate(edges, kernel, iterations=1)
+    edges = cv2.Canny(edges, minEdgeVal, maxEdgeVal)
+
+    edges = cv2.dilate(edges, kernel, iterations=1)
+    edges = cv2.erode(edges,kernel,iterations=1)
+    edges = cv2.Canny(edges, minEdgeVal, maxEdgeVal)
 
     # Finds the circles in the frame
     circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, 1, 20,
                             param1=50, param2=30, minRadius=minCircleRadius, maxRadius=maxCircleRadius)
 
+    # Draws the median circle in the edges frame
     if not circles is None:
-        circles = np.uint16(np.around(circles))
-        centers = []
-
-        for i in circles[0,:]:
-            # draw the outer circle
-            cv2.circle(edges,(i[0],i[1]),i[2],(255,255,255),2)
-            # draw the center of the circle
-            cv2.circle(edges,(i[0],i[1]),2,(255,255,255),3)
-            centers.append(i)
-            print("Edges circle center at: " + str(i[0]) + ", " + str(i[1]))
-
+        circles = numpy.uint16(numpy.around(circles))
+        # Lists to save center (x,y) and radius
         listX = []
         listY = []
+        listR = []
 
-        for i in centers:
+        # Save the values into the corresponding lists
+        for i in circles[0, :]:
+            # draw the outer circle
+            # cv2.circle(edges, (i[0], i[1]), i[2], (255, 255, 255), 2)
+            # draw the center of the circle
+            # cv2.circle(edges, (i[0], i[1]), 2, (255, 255, 255), 3)
+
+            # Save the centers and radii
             listX.append(i[0])
             listY.append(i[1])
+            listR.append(i[2])
+            print("Edges circle center at: " + str(i[0]) + ", " + str(i[1]))
 
+        # Sort the centers and radii
         sortedX = mergeSort(listX)
         sortedY = mergeSort(listY)
+        sortedR = mergeSort(listR)
 
-        print("Median edges circle center: " + str(sortedX[len(sortedX) // 2]) + ", " + str(sortedY[len(sortedY) // 2]))
+        # Find the medians
+        medianX = sortedX[len(sortedX) // 2]
+        medianY = sortedY[len(sortedY) // 2]
+        medianR = sortedR[len(sortedR) // 2]
 
+        # Draw/print the median circle
+        cv2.circle(edges, (medianX, medianY), medianR, (255, 255, 255), 2)
+        cv2.circle(edges, (medianX, medianY), 2, (255, 255, 255), 2)
+        print("Median edges circle center: " + str(medianX) + ", " + str(medianY) + " with radius " + str(medianR))
+        cv2.imshow("Edges Circle", edges)
+
+    # Find circles in the motion frame
     circles = cv2.HoughCircles(frameDelta, cv2.HOUGH_GRADIENT, 1, 20,
                             param1=50, param2=30, minRadius=minCircleRadius, maxRadius=maxCircleRadius)
 
+    # Draws the median circle in the motion frame
     if not circles is None:
-        circles = np.uint16(np.around(circles))
-
-        for i in circles[0, :]:
-            # draw the outer circle
-            cv2.circle(frameDelta, (i[0], i[1]), i[2], (255, 255, 255), 2)
-            # draw the center of the circle
-            cv2.circle(frameDelta, (i[0], i[1]), 2, (255, 255, 255), 3)
-            print("Motion circle center at: " + str(i[0]) + ", " + str(i[1]))
-
+        circles = numpy.uint16(numpy.around(circles))
+        # Lists to save center (x,y) and radius
         listX = []
         listY = []
+        listR = []
 
-        for i in centers:
+        # Save the values into the corresponding lists
+        for i in circles[0, :]:
+            # draw the outer circle
+            # cv2.circle(edges, (i[0], i[1]), i[2], (255, 255, 255), 2)
+            # draw the center of the circle
+            # cv2.circle(edges, (i[0], i[1]), 2, (255, 255, 255), 3)
+
+            # Save the centers and radii
             listX.append(i[0])
             listY.append(i[1])
+            listR.append(i[2])
+            print("Motion circle center at: " + str(i[0]) + ", " + str(i[1]))
 
+        # Sort the centers and radii
         sortedX = mergeSort(listX)
         sortedY = mergeSort(listY)
+        sortedR = mergeSort(listR)
 
-        print("Median motion circle center: " + str(sortedX[len(sortedX) // 2]) + ", " + str(sortedY[len(sortedY) // 2]))
+        # Find the medians
+        medianX = sortedX[len(sortedX) // 2]
+        medianY = sortedY[len(sortedY) // 2]
+        medianR = sortedR[len(sortedR) // 2]
+
+        # Draw/print the median circle
+        cv2.circle(frameDelta, (medianX, medianY), medianR, (255, 255, 255), 2)
+        cv2.circle(frameDelta, (medianX, medianY), 2, (255, 255, 255), 2)
+        print("Median motion circle center: " + str(medianX) + ", " + str(medianY) + " with radius " + str(medianR))
+        cv2.imshow("Motion Circle", frameDelta)
 
     # Display all the frames
     cv2.imshow('original', frame)
