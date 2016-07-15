@@ -3,7 +3,7 @@ import cv2
 
 #img1 = cv2.imread('/home/user1/opencv/samples/data/box.png',0)          # queryImage
 img1 = cv2.imread('./templates/techgarage-logo.png',0)          # queryImage
-img2 = cv2.imread('/home/user1/opencv/samples/data/box_in_scene.png',0) # trainImage
+img2 = cv2.imread('/home/winston/opencv/samples/data/box_in_scene.png',0) # trainImage
 
 # Initiate SIFT detector
 # sift = cv2.xfeatures2d.SURF_create(1000)
