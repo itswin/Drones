@@ -42,55 +42,126 @@ def videoCallback( frame, drone, debug=False ):
         # Find edges after motion detection
         edges = cv2.Canny(frame, drone.minEdgeVal, drone.maxEdgeVal)
 
-        # Dilate/erode the edges to make circles easier to detect
-        # Uncomment if the lights are on
-        # kernel = numpy.ones((5, 5), numpy.uint8)
-        # edges = cv2.dilate(edges, kernel, iterations=1)
-        # edges = cv2.erode(edges, kernel, iterations=1)
-        # edges = cv2.dilate(edges, kernel, iterations=2)
-        # edges = cv2.erode(edges, kernel, iterations=2)
+        if drone.pictureBoolean:
+            drone.pictureBoolean = False
+            cv2.imwrite("saved_image.jpg", edges)
 
+        # # Find sphero using circles
+        # if drone.findSphero:
+        #     # Find circles after detecting edges
+        #     circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, 1.2, 5,
+        #                                param1=50, param2=30, minRadius=drone.minCircleRadius, maxRadius=drone.maxCircleRadius)
+        #     # circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, 1.2, 10, minRadius=drone.minCircleRadius, maxRadius=drone.maxCircleRadius)
+        #
+        #     if circles is not None:
+        #         circles = numpy.uint16(numpy.around(circles))
+        #         listX = []
+        #         listY = []
+        #         listR = []
+        #
+        #         for i in circles[0, :]:
+        #             # # draw the outer circle
+        #             # cv2.circle(edges, (i[0], i[1]), i[2], (255, 255, 255), 2)
+        #             # # draw the center of the circle
+        #             # cv2.circle(edges, (i[0], i[1]), 2, (255, 255, 255), 3)
+        #
+        #             # Save the centers and radii
+        #             listX.append(i[0])
+        #             listY.append(i[1])
+        #             listR.append(i[2])
+        #             # print("Edges circle center at: " + str(i[0]) + ", " + str(i[1]))
+        #
+        #         # Sort the centers and radii and print/draw the median
+        #         sortedX = mergeSort(listX)
+        #         sortedY = mergeSort(listY)
+        #         sortedR = mergeSort(listR)
+        #
+        #         medianX = sortedX[len(sortedX) // 2]
+        #         medianY = sortedY[len(sortedY) // 2]
+        #         medianR = sortedR[len(sortedR) // 2]
+        #
+        #         drone.objectCenterX = medianX
+        #         drone.objectCenterY = medianY
+        #
+        #         cv2.circle(edges, (medianX, medianY), medianR, (255,255,255), 2)
+        #         cv2.circle(edges, (medianX, medianY), 2, (255,255,255), 2)
+        #         # print("Median edges circle center: " + str(medianX) + ", " + str(medianY) + " with radius " + str(medianR))
+        #
+        #         drone.sinceLastSphero = 0
+        #     else:
+        #         # Fake a circle in the center if none found
+        #         drone.objectCenterX = drone.frameWidth >> 1
+        #         drone.objectCenterY = drone.frameHeight >> 1
+        #
+        #         drone.sinceLastSphero += 1
+        # else:
+        #     # Fake a circle in the center if none found
+        #     drone.objectCenterX = drone.frameWidth >> 1
+        #     drone.objectCenterY = drone.frameHeight >> 1
+
+        # Find sphero using blobs
         if drone.findSphero:
-            # Find circles after detecting edges
-            circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, 1.2, 5,
-                                       param1=50, param2=30, minRadius=drone.minCircleRadius, maxRadius=drone.maxCircleRadius)
-            # circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, 1.2, 10, minRadius=drone.minCircleRadius, maxRadius=drone.maxCircleRadius)
+            # kernel = numpy.ones((5, 5), numpy.uint8)
+            # edges = cv2.dilate(edges, kernel, iterations=1)
+            # edges = cv2.erode(edges, kernel, iterations=1)
 
-            if not circles is None:
-                circles = numpy.uint16(numpy.around(circles))
+            params = cv2.SimpleBlobDetector_Params()
+
+            # Filter by Circularity
+            # params.filterByCircularity = True
+            # params.minCircularity = 0.6
+
+            # Filter by Area.
+            # params.filterByArea = True
+            # params.minArea = 16
+
+            detector = cv2.SimpleBlobDetector_create(params)
+            keypoints = detector.detect(edges)
+
+            if keypoints is not None:
                 listX = []
                 listY = []
                 listR = []
 
-                for i in circles[0, :]:
+                for keypoint in keypoints:
                     # # draw the outer circle
                     # cv2.circle(edges, (i[0], i[1]), i[2], (255, 255, 255), 2)
                     # # draw the center of the circle
                     # cv2.circle(edges, (i[0], i[1]), 2, (255, 255, 255), 3)
 
                     # Save the centers and radii
-                    listX.append(i[0])
-                    listY.append(i[1])
-                    listR.append(i[2])
+                    # print point.pt[0]
+                    listX.append(int(keypoint.pt[0]))
+                    listY.append(int(keypoint.pt[1]))
+                    listR.append(int(keypoint.size / 2))
                     # print("Edges circle center at: " + str(i[0]) + ", " + str(i[1]))
+                    # print keypoint.pt
 
-                # Sort the centers and radii and print/draw the median
-                sortedX = mergeSort(listX)
-                sortedY = mergeSort(listY)
-                sortedR = mergeSort(listR)
+                if len(listX) > 0 and len(listY) > 0 and len(listR) > 0:
+                    # Sort the centers and radii and print/draw the median
+                    sortedX = mergeSort(listX)
+                    sortedY = mergeSort(listY)
+                    sortedR = mergeSort(listR)
 
-                medianX = sortedX[len(sortedX) // 2]
-                medianY = sortedY[len(sortedY) // 2]
-                medianR = sortedR[len(sortedR) // 2]
+                    print sortedX
+                    medianX = sortedX[len(sortedX) // 2]
+                    medianY = sortedY[len(sortedY) // 2]
+                    medianR = sortedR[len(sortedR) // 2]
 
-                drone.objectCenterX = medianX
-                drone.objectCenterY = medianY
+                    drone.objectCenterX = medianX
+                    drone.objectCenterY = medianY
 
-                cv2.circle(edges, (medianX, medianY), medianR, (255,255,255), 2)
-                cv2.circle(edges, (medianX, medianY), 2, (255,255,255), 2)
-                # print("Median edges circle center: " + str(medianX) + ", " + str(medianY) + " with radius " + str(medianR))
+                    cv2.circle(edges, (medianX, medianY), medianR, (255,255,255), 2)
+                    cv2.circle(edges, (medianX, medianY), 2, (255,255,255), 2)
+                    # print("Median edges circle center: " + str(medianX) + ", " + str(medianY) + " with radius " + str(medianR))
 
-                drone.sinceLastSphero = 0
+                    drone.sinceLastSphero = 0
+                else:
+                    # Fake a circle in the center if none found
+                    drone.objectCenterX = drone.frameWidth >> 1
+                    drone.objectCenterY = drone.frameHeight >> 1
+
+                    drone.sinceLastSphero += 1
             else:
                 # Fake a circle in the center if none found
                 drone.objectCenterX = drone.frameWidth >> 1
@@ -101,6 +172,7 @@ def videoCallback( frame, drone, debug=False ):
             # Fake a circle in the center if none found
             drone.objectCenterX = drone.frameWidth >> 1
             drone.objectCenterY = drone.frameHeight >> 1
+            drone.sinceLastSphero = 0
 
         cnt += 1
         cv2.imshow("Drone Video", frame)
@@ -189,6 +261,9 @@ while not done:
         tiltDelta = 0
         panDelta = 0
 
+        if joystick.get_button(1):
+            drone.pictureBoolean = True
+
         # A and Back to emergency land
         if joystick.get_button(0) == 1 and joystick.get_button(6) == 1:
             drone.emergency()
@@ -202,9 +277,9 @@ while not done:
 
         # Start to takeoff
         if joystick.get_button(7) == 1:
-            # if drone.flyingState is None:
-            #     drone.takeoff()
-            drone.takeoff()
+            if drone.flyingState is 0:
+                drone.takeoff()
+            # drone.takeoff()
 
         # --- Flying ---
         # Power values
@@ -228,7 +303,7 @@ while not done:
         if joystick.get_button(3) == 1 and not drone.findSphero:
             print("Start finding sphero")
             drone.findSphero = True
-            drone.moveScaler = .15
+            drone.moveScaler = .25
 
             # Upper and lower bounds for circle pixel radius
             drone.minCircleRadius = 5
@@ -237,25 +312,6 @@ while not done:
         if joystick.get_button(2) and drone.findSphero:
             print("Stop finding sphero")
             drone.findSphero = False
-
-        if drone.findSphero and not userMovement:
-            roll = (drone.objectCenterX - (drone.frameWidth >> 1)) * drone.moveScaler
-            pitch = ((drone.frameHeight >> 1) - drone.objectCenterY) * drone.moveScaler
-
-            roll = clip(roll, -100, 100)
-            pitch = clip(pitch, -100, 100)
-
-            # print("Finding Sphero")
-            # print(roll)
-            # print(pitch)
-            spheroMoveCounter += 1
-
-            if (drone.sinceLastSphero % 3) == 0 and drone.altitude >= 1:
-                drone.update(cmd=movePCMDCmd(True, 0, 0, 0, -10))
-
-            if drone.altitude < 1:
-                drone.flyToAltitude(1.5)
-
 
         # --- Move camera ---
 
@@ -280,16 +336,29 @@ while not done:
 
         drone.moveCamera(tilt, pan)
 
-        # if not userMovement:
-        #     drone.hover()
-        # else:
-        #     drone.update(cmd=movePCMDCmd(True, roll, pitch, yaw, gaz))
-
+        # All movement updated here
         if userMovement:
             drone.update(cmd=movePCMDCmd(True, roll, pitch, yaw, gaz))
         elif drone.findSphero:
+            roll = (drone.objectCenterX - (drone.frameWidth >> 1)) * drone.moveScaler
+            pitch = ((drone.frameHeight >> 1) - drone.objectCenterY) * drone.moveScaler
+
+            roll = clip(roll, -100, 100)
+            pitch = clip(pitch, -100, 100)
+
+            # print("Finding Sphero")
+            # print(roll)
+            # print(pitch)
+            spheroMoveCounter += 1
+
+            # if (drone.sinceLastSphero % 3) == 0 and drone.altitude >= 1:
+            #     drone.update(cmd=movePCMDCmd(True, 0, 0, 0, -10))
+            #
+            # if drone.altitude < 1:
+            #     drone.flyToAltitude(1.5)
+
             # Adjustment test
-            if (spheroMoveCounter % 3) == 0:
+            if (spheroMoveCounter % 2) == 0:
                 roll *= .2
                 pitch *= .2
 
