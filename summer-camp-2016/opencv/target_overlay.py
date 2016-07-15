@@ -3,7 +3,7 @@ import cv2
 target_image = cv2.imread("./templates/sniper-target.png")
 target_image_resized = None
 
-camera = cv2.VideoCapture(1)
+camera = cv2.VideoCapture(0)
 while True:
     (grabbed, image) = camera.read()
     if grabbed:
