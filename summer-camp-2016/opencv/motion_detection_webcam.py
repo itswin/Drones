@@ -1,8 +1,15 @@
 import cv2
-import numpy as np
+import numpy
 
 camera = cv2.VideoCapture(0)
-first_frame = None
+grabbed, frame = camera.read()
+
+if grabbed:
+    print("Frame width: " + str(numpy.size(frame, 1)))
+    print("Frame height: " + str(numpy.size(frame, 0)))
+
+thisFrame = None
+lastFrame = None
 
 while True:
     (grabbed, frame) = camera.read()
@@ -11,13 +18,19 @@ while True:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (21, 21), 0)
 
-    if first_frame == None:
-        first_frame = gray
-        cv2.imshow('Base frame', first_frame)
+    # Save frames to compare to on next iteration
+    if thisFrame is None:
+        lastFrame = frame
+    else:
+        lastFrame = thisFrame
+    thisFrame = frame
+
+    grayLastFrame = cv2.cvtColor(lastFrame, cv2.COLOR_BGR2GRAY)
+    grayLastFrame = cv2.GaussianBlur(grayLastFrame, (21, 21), 0)
 
     # compute the absolute difference between the current frame and
     # first frame
-    frameDelta = cv2.absdiff(first_frame, gray)
+    frameDelta = cv2.absdiff(grayLastFrame, gray)
     thresh = cv2.threshold(frameDelta, 25, 255, cv2.THRESH_BINARY)[1]
 
     # dilate the thresholded image to fill in holes, then find contours
