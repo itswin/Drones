@@ -40,6 +40,7 @@ def videoCallback( frame, drone, debug=False ):
         # frameDelta = cv2.absdiff(grayLastFrame, gray)
 
         ret, thresh = cv2.threshold(frame, 127, 255, cv2.THRESH_BINARY)
+        # edges = cv2.cvtColor(edges, cv2.COLOR_BGR2GRAY)
 
         # Find edges after motion detection
         edges = cv2.Canny(thresh, drone.minEdgeVal, drone.maxEdgeVal)
@@ -104,7 +105,7 @@ def videoCallback( frame, drone, debug=False ):
             drone.objectCenterY = drone.frameHeight >> 1
             drone.foundCircle = False
 
-        # Find sphero using blobs
+        # Find sphero using blobs if no circles found
         if drone.findSphero and not drone.foundCircle:
             kernel = numpy.ones((5, 5), numpy.uint8)
             edges = cv2.dilate(edges, kernel, iterations=1)
@@ -210,8 +211,8 @@ drone = Bebop( metalog=None, onlyIFrames=True, jpegStream=True)
 drone.trim()
 drone.videoCbk = videoCallback
 drone.videoEnable()
-drone.minEdgeVal = 50
-drone.maxEdgeVal = 70
+drone.minEdgeVal = 30
+drone.maxEdgeVal = 50
 print("Connected.")
 
 pygame.init()
@@ -237,7 +238,7 @@ else:
           (joystick.get_numbuttons(), joystick.get_numaxes(),
            joystick.get_numhats()))
 
-MAX_SPEED = 60
+MAX_SPEED = 40
 
 tilt = 0
 tiltMin = -70
@@ -360,8 +361,8 @@ while not done:
             roll = (drone.objectCenterX - (drone.frameWidth >> 1)) * drone.moveScaler
             pitch = ((drone.frameHeight >> 1) - drone.objectCenterY) * drone.moveScaler
 
-            roll = clip(roll, -100, 100)
-            pitch = clip(pitch, -100, 100)
+            roll = clip(roll, -50, 50)
+            pitch = clip(pitch, -50, 50)
 
             # print("Finding Sphero")
             # print(roll)
