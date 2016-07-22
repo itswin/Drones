@@ -180,6 +180,29 @@ def navigateHomeCmd( go=True ):
     # ARCOMMANDS_ID_ARDRONE3_PILOTING_CMD_NAVIGATEHOME = 5,
     return struct.pack("<BBHB", 1, 0, 5, go)
 
+def setMaxAltitude( alt=10 ):
+    # ARCOMMANDS_ID_PROJECT_ARDRONE3 = 1
+    # ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSETTINGS = 2
+    # ARCOMMANDS_ID_ARDRONE3_PILOTINGSETTINGS_CMD_MAXALTITUDE = 0
+    return struct.pack("BBHf", 1, 2, 0, alt)
+
+def setMaxTilt( tilt=8 ):
+    # ARCOMMANDS_ID_PROJECT_ARDRONE3 = 1
+    # ARCOMMANDS_ID_ARDRONE3_CLASS_PILOTINGSETTINGS = 2
+    # ARCOMMANDS_ID_ARDRONE3_PILOTINGSETTINGS_CMD_MAXTILT = 1
+    return struct.pack("BBHf", 1, 2, 1, tilt)
+
+def setMaxVerticalSpeed( maxVerticalSpeed=1 ):
+    # ARCOMMANDS_ID_PROJECT_ARDRONE3 = 1,
+    # ARCOMMANDS_ID_ARDRONE3_CLASS_SPEEDSETTINGS = 11,
+    # ARCOMMANDS_ID_ARDRONE3_SPEEDSETTINGS_CMD_MAXVERTICALSPEED = 0,
+    return struct.pack("BBHf", 1, 11, 0, maxVerticalSpeed)
+
+def setMaxRotationSpeed( maxRotationSpeed=90 ):
+    # ARCOMMANDS_ID_PROJECT_ARDRONE3 = 1,
+    # ARCOMMANDS_ID_ARDRONE3_CLASS_SPEEDSETTINGS = 11,
+    # ARCOMMANDS_ID_ARDRONE3_SPEEDSETTINGS_CMD_MAXROTATIONSPEED = 1,
+    return struct.pack("BBHf", 1, 11, 1, maxRotationSpeed)
 
 def packData( payload, ackRequest=False ):
     frameType = 2
