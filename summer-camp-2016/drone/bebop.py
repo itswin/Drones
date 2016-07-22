@@ -11,6 +11,7 @@ import struct
 import time
 import numpy
 import subprocess as sp
+import json
 
 from navdata import *
 from commands import *
@@ -71,6 +72,38 @@ class JpegReader(Thread):
 
 class Bebop:
     def __init__( self, metalog=None, onlyIFrames=True, jpegStream=False, fps = 0 ):
+        # Struct formats
+        self.constants = json.load(open('constants.json'))
+        self.typeFmts = {
+            'u8'     : 'B',
+            'i8'     : 'b',
+            'u16'    : 'H',
+            'i16'    : 'h',
+            'u32'    : 'I',
+            'i32'    : 'i',
+            'u64'    : 'Q',
+            'i64'    : 'q',
+            'float'  : 'f',
+            'double' : 'd',
+            'string' : 's',
+            'enum'   : 'i',
+        }
+        self.fmtHexLengths = {
+            'u8': 1,
+            'i8': 1,
+            'u16': 2,
+            'i16': 2,
+            'u32': 4,
+            'i32': 4,
+            'u64': 8,
+            'i64': 8,
+            'float': 4,
+            'double': 8,
+            'string': 2,
+            'enum': 4,
+        }
+
+
         if metalog is None:
             self._discovery()
             metalog = MetaLog()
@@ -113,6 +146,7 @@ class Bebop:
         # Sphero tracking variables
         self.findSphero = False
         self.sinceLastSphero = 0
+        self.foundCircle = False
         self.lastFrame = None
         self.thisFrame = None
         self.moveScaler = 0
@@ -122,6 +156,7 @@ class Bebop:
         self.maxEdgeVal = 0
         self.minCircleRadius = 0
         self.maxCircleRadius = 0
+
 
         if self.jpegStream:
             self.videoFrameProcessor = VideoFrames(onlyIFrames=False, verbose=False)
@@ -165,14 +200,14 @@ class Bebop:
         data, self.buf = cutPacket( self.buf )
         return data
 
-    def _parseData( self, data ):
+    def _parseData( self, data, verbose=False ):
         try:
-            parseData( data, robot=self, verbose=False )
+            parseData( data, robot=self, verbose=verbose )
         except AssertionError, e:
             print("AssertionError", e)
 
 
-    def update( self, cmd=None, ackRequest=False ):
+    def update( self, cmd=None, ackRequest=False, verbose=False ):
         "send command and return navdata"
         if cmd is None:
             data = self._update( None )
@@ -180,11 +215,15 @@ class Bebop:
             data = self._update( packData(cmd, ackRequest=ackRequest) )
         while True:
             if ackRequired(data):
-                self._parseData( data )
-                data = self._update( createAckPacket(data) )
+                self._parseData( data, verbose=verbose )
+                data = self._update( createAckPacket( data ) )
+                # print("ackRequired")
+                # verbose=False
             elif pongRequired(data):
-                self._parseData( data ) # update self.time
+                self._parseData( data, verbose=verbose ) # update self.time
                 data = self._update( createPongPacket(data) )
+                # print("pongRequired")
+                # verbose=False
             elif videoAckRequired(data):
                 if self.videoCbk:
                     self.videoFrameProcessor.append( data )
@@ -202,7 +241,8 @@ class Bebop:
                 data = self._update( createVideoAckPacket(data) )
             else:
                 break
-        self._parseData( data )
+        self._parseData( data, verbose=verbose )
+        # print("noneRequired")
         return data
 
     def setVideoCallback( self, cbk, cbkResult=None ):
@@ -299,11 +339,12 @@ class Bebop:
         self.update( cmd=resetHomeCmd() )
 
 
-    def wait( self, duration ):
-        print("Wait", duration)
+    def wait( self, duration, verbose=True ):
+        if verbose:
+            print("Wait", duration)
         assert self.time is not None
         startTime = self.time
-        while self.time-startTime < duration:
+        while self.time - startTime < duration:
             self.update()
 
     def flyToAltitude( self, altitude, timeout=3.0 ):
