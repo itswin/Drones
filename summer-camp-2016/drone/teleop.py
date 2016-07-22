@@ -61,13 +61,11 @@ f = open( "./images/video.h264", "wb" )
 decoder = Decoder()
 face_cascade = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
 
-current_milli_time = lambda: int(round(time.time() * 1000))
-
 print("Connecting to drone...")
-drone = Bebop( metalog=None, onlyIFrames=True, jpegStream=True)
+drone = Bebop( metalog=None, onlyIFrames=True, jpegStream=False)
 drone.trim()
-drone.videoCbk = videoCallback
-drone.videoEnable()
+# drone.videoCbk = videoCallback
+# drone.videoEnable()
 print("Connected.")
 
 pygame.init()
@@ -93,7 +91,7 @@ else:
           (joystick.get_numbuttons(), joystick.get_numaxes(),
            joystick.get_numhats()))
 
-MAX_SPEED = 60
+MAX_SPEED = 40
 
 tilt = 0
 tiltMin = -70
@@ -103,7 +101,7 @@ pan = 0
 panMin = -40
 panMax = 40
 
-lastTime = current_milli_time()
+lastTime = time.time()
 secondsCounter = 0
 frames = 0
 
@@ -118,8 +116,8 @@ while not done:
                 done = True  # Flag that we are done so we exit this loop
 
         # Displays battery every 5 seconds
-        nowTime = current_milli_time()
-        if (nowTime - lastTime) > 1000:
+        nowTime = time.time()
+        if (nowTime - lastTime) > 1:
             secondsCounter += 1
             lastTime = nowTime
 
@@ -148,7 +146,8 @@ while not done:
 
         # Start to takeoff
         if joystick.get_button(7) == 1:
-            if drone.flyingState == 0:
+            print("Flying state:", drone.flyingState)
+            if drone.flyingState is None or drone.flyingState == 0:
                 drone.takeoff()
 
         # --- Flips ---
